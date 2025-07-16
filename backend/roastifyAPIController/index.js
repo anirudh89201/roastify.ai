@@ -7,7 +7,7 @@ import { OpenAI } from "openai/client.js";
 const app = express()
 app.use(cookie());
 app.use(cors({
-    origin:'https://roastify-ai-rwjj.vercel.app',
+    origin:'https://roastify-ai-1enq.vercel.app',
     credentials:true
 }));
 dotenv.config();
