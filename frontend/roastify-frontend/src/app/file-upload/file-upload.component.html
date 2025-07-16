@@ -1,0 +1,93 @@
+<section class="relative py-20 px-4 sm:px-6 lg:px-8 overflow-hidden">
+  <!-- Background decorations -->
+  <div class="absolute top-20 left-10 text-6xl opacity-20 animate-bounce">😂</div>
+  <div class="absolute top-40 right-10 text-4xl opacity-20 animate-pulse">🔥</div>
+  <div class="absolute bottom-20 left-20 text-5xl opacity-20 animate-bounce delay-300">💀</div>
+
+  <div class="max-w-4xl mx-auto text-center">
+  <h1 class="justify-center flex flex-row text-5xl sm:text-6xl lg:text-7xl font-extrabold mb-6 leading-tight space-x-6">
+    <span class="bg-gradient-to-r from-purple-600 via-pink-600 to-red-500 bg-clip-text text-transparent animate-pulse">
+      Upload
+    </span>
+    <span class="bg-gradient-to-r from-red-500 via-orange-500 to-yellow-500 bg-clip-text text-transparent">
+      Roast
+    </span>
+    <span class="bg-gradient-to-r from-green-500 via-blue-500 to-purple-600 bg-clip-text text-transparent">
+      Laugh.
+    </span>
+  </h1>
+
+    <p class="text-xl sm:text-2xl text-gray-600 mb-12 max-w-3xl mx-auto leading-relaxed">
+      Get hilariously roasted by our AI! Upload your photo and prepare for some savage but playful burns.
+      <span class="text-2xl ml-2">😈</span>
+    </p>
+
+    <div
+      class="bg-white/70 backdrop-blur-lg rounded-3xl p-8 shadow-2xl border border-white/20 max-w-2xl mx-auto"
+      [class.drag-over]="isDragOver"
+      (dragover)="onDragOver($event)"
+      (dragleave)="onDragLeave($event)"
+      (drop)="onDrop($event)"
+    >
+      <form [formGroup]="UploadForm" (ngSubmit)="SubmitForm()" class="space-y-6">
+        <!-- File Upload Section -->
+        <div class="flex flex-col items-center space-y-4">
+          <input
+            type="file"
+            formControlName="File"
+            (change)="onImagePicker($event)"
+            accept="image/*"
+             class="file:mr-4 file:py-2 file:px-4
+         file:rounded-full file:border-0
+         file:text-sm file:font-semibold
+         file:bg-gradient-to-r file:from-purple-600 file:to-pink-600 file:text-white
+         hover:file:from-purple-700 hover:file:to-pink-700"
+            />
+
+          <!-- Image Preview -->
+          <div *ngIf="imagePreviewUrl" class="relative w-48 h-48 rounded-xl overflow-hidden border-2 border-dashed border-gray-400">
+            <img [src]="imagePreviewUrl" alt="Preview" class="object-cover w-full h-full rounded-xl" />
+            <button
+              type="button"
+              (click)="clearUploadedFile()"
+              class="absolute top-1 right-1 bg-red-600 text-white p-1 rounded-full hover:bg-red-700"
+              title="Remove"
+            >
+              ✖
+            </button>
+          </div>
+        </div>
+        <!-- Submit Button -->
+          <button
+    type="submit"
+    [disabled]="!selectedFile || loading"
+    class="w-full bg-gradient-to-r from-red-500 to-pink-600 hover:from-red-600 hover:to-pink-700 text-white text-xl py-4 px-8 rounded-2xl transition-all duration-300 transform hover:scale-105 disabled:opacity-50 disabled:cursor-not-allowed disabled:transform-none shadow-lg"
+  >
+    <ng-container *ngIf="!loading; else loadingTemplate">
+      {{ selectedFile ? '🔥 Roast Me Now! 🔥' : '📸 Upload Photo First' }}
+    </ng-container>
+    <ng-template #loadingTemplate>
+      <span class="flex items-center justify-center">
+        <svg class="animate-spin h-5 w-5 mr-2 text-white" viewBox="0 0 24 24">
+          <circle class="opacity-25" cx="12" cy="12" r="10"
+                  stroke="currentColor" stroke-width="4" fill="none"></circle>
+          <path class="opacity-75" fill="currentColor"
+                d="M4 12a8 8 0 018-8v8H4z"></path>
+        </svg>
+        Loading...
+      </span>
+    </ng-template>
+  </button>
+
+      </form>
+    </div>
+  </div>
+<div *ngIf="showRoastModel">
+  <app-app-roast-modal 
+    [roastLine]="roastLine" 
+    [imgPreviewUrl]="imagePreviewUrl" 
+    (close)="closeModal()">
+  </app-app-roast-modal>
+</div>
+
+</section>

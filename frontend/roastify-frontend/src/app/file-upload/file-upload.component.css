@@ -1,0 +1,155 @@
+/* Main section container */
+.upload-hero {
+  text-align: center;
+  padding: 2rem;
+  background: #ffffff;
+  min-height: 80vh;
+}
+
+/* Title Styling */
+.title {
+  font-size: 2.5rem;
+  font-weight: bold;
+  margin-bottom: 1.5rem;
+}
+
+.highlight {
+  color: #f9b233;
+}
+
+/* Upload Form Container */
+.upload-form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* Upload Drop Zone */
+.upload-box {
+  border: 2px dashed #ccc;
+  padding: 2rem;
+  width: 100%;
+  max-width: 500px;
+  background: #f7f8fa;
+  border-radius: 12px;
+  margin-bottom: 1rem;
+  transition: border-color 0.3s ease;
+}
+
+.upload-box:hover {
+  border-color: #3182ce;
+}
+
+/* Upload Label */
+.upload-label {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  cursor: pointer;
+  padding: 1rem;
+}
+
+.upload-label p {
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: #333;
+}
+
+.upload-label span {
+  font-size: 0.9rem;
+  color: #666;
+}
+
+/* Hide the file input */
+.file-input {
+  display: none;
+}
+
+/* Submit Button */
+.submit-btn {   
+margin-top:10px;
+  padding: 0.75rem 2rem;
+  background-color: #3182ce;
+  color: #fff;
+  border: none;
+  border-radius: 30px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+.upload-box.drag-over{
+    border-color:#3182ce;
+    background-color: #ebf8ff;
+}
+.submit-btn:hover {
+  background-color: #2563eb;
+}
+
+/* Roast Response Styling */
+.roast-result {
+  margin-top: 2rem;
+  font-size: 1.4rem;
+  color: #111;
+  font-weight: 500;
+}
+
+/* Responsive Adjustments */
+@media screen and (max-width: 600px) {
+  .title {
+    font-size: 2rem;
+  }
+
+  .upload-box {
+    padding: 1.5rem;
+  }
+
+  .submit-btn {
+    width: 100%;
+  }
+}
+.language-dropdown{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 10px;
+}
+.language-label{
+    margin-right:7px;
+    text-align: center;
+    font-size: large;
+    font-family:Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+}
+.language-select {
+  padding: 0.5rem 3rem;
+  font-size: 1rem;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  text-align: left;
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  font-size: small;
+}
+.preview-wrapper{
+    position:relative;
+    display: inline-block;
+}
+.preview-wrapper img {
+  max-width: 100%;
+  max-height: 200px;
+  border-radius: 8px;
+}
+
+.close-btn {
+  position: absolute;
+  top: 5px;
+  right: 5px;
+  background-color: rgba(255, 255, 255, 0.8);
+  border: none;
+  font-size: 18px;
+  cursor: pointer;
+  border-radius: 50%;
+  width: 30px;
+  height: 30px;
+  line-height: 28px;
+  text-align: center;
+}

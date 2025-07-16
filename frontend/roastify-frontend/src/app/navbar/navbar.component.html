@@ -1,0 +1,33 @@
+<nav class="sticky top-0 z-50 bg-white/80 backdrop-blur-md border-b border-gray-200/20 shadow-sm">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="flex justify-between items-center h-16">
+      
+      <!-- Logo Section -->
+      <div class="flex items-center space-x-2">
+        <div class="text-2xl">🔥</div>
+        <span class="text-xl font-bold bg-gradient-to-r from-purple-600 to-pink-600 bg-clip-text text-transparent">
+          Roastify.ai
+        </span>
+      </div>
+
+      <div class="flex items-center space-x-4">
+  <button
+    class="text-gray-700 hover:text-purple-600 transition-colors bg-transparent border-none"
+    (click)="onLogin()"
+  >
+    {{ userName ? 'Hi, ' + userName : 'Sign In' }}
+  </button>
+  <button
+  class="text-gray-700 hover:text-purple-600 transition-colors bg-transparent border-none"
+  (click)="onLogOut()"
+  >
+  Logout
+    </button>
+</div>
+
+    </div>
+  </div>
+</nav>
+  <app-signup *ngIf="showModal" (close)="OnCloseLogin()">    
+  </app-signup>
+
