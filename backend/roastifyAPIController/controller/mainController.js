@@ -59,7 +59,7 @@ export const removeUser = async(req,res) => {
     res.clearCookie("authToken",{
         httpOnly:true,
         secure:true,
-        sameSite:'Lax'
+        sameSite:'None'
     });
     return res.status(200).json({"message":"Logout Succesfully."});
 }
