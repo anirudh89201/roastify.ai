@@ -28,12 +28,13 @@ export const SignUpService = async(req,res) => {
     const Jwttoken = jwt.sign({name:payload.name,email:payload.email},process.env.JWT_SECRET_KEY,{
         expiresIn:'7d',
     })
-  res.cookie('authToken', Jwttoken, {
-  httpOnly: true,
-  secure: false, // must be false for local HTTP testing
-  sameSite: 'Lax',
-  maxAge: 7 * 24 * 60 * 60 * 1000,
-});
+    res.cookie('authToken', Jwttoken, {
+        httpOnly: true,
+        secure: true, // required for HTTPS
+        sameSite: 'None', // required for cross-site cookies
+        maxAge: 7 * 24 * 60 * 60 * 1000, // 7 days
+      });
+      
 
     return res.status(200).json({user:payload.name});
    }catch(error){
@@ -57,7 +58,7 @@ export const removeUser = async(req,res) => {
     console.log("Cookies before clearing:",req.cookies);
     res.clearCookie("authToken",{
         httpOnly:true,
-        secure:false,
+        secure:true,
         sameSite:'Lax'
     });
     return res.status(200).json({"message":"Logout Succesfully."});
